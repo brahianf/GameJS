@@ -8,11 +8,12 @@ class Juego{
   constructor() {
     this.inicializar()
     this.generarSecuencia()
+    this.siguienteNivel()
   }
 
   inicializar() {
-    // btnEmpezar.classList.add('hide')
-    this.nivel=1
+    btnEmpezar.classList.add('hide')
+    this.nivel=7
     this.colores = {
       celeste,
       violeta,
@@ -23,6 +24,39 @@ class Juego{
 
   generarSecuencia(){
     this.secuencia= new Array(10).fill(0).map(n => Math.floor(Math.random() *4))
+  }
+
+  siguienteNivel(){
+    this.iluminarSecuecia()
+  }
+
+  transformarNumeroAcolor(numero){
+    switch(numero){
+      case 0:
+        return 'celeste'
+      case 1:
+        return 'violeta'
+      case 2:
+        return 'naranja'
+      case 3:
+        return 'verde'
+    }
+  }
+
+  iluminarSecuecia(){
+    for(let i=0; i < this.nivel; i++){
+      const color=this.transformarNumeroAcolor(i)
+      setTimeout(() => this.iluminarColor(color), 1000 * i)
+    }
+  }
+
+  iluminarColor(color) {
+    this.colores[color].classList.add('light')
+    setTimeout( () => this.apagarColor(color), 400)
+  }
+
+  apagarColor(color){
+    this.colores[color].classList.remove('light')
   }
 }
 
