@@ -2,6 +2,7 @@
 const API_URL = 'https://rickandmortyapi.com/api/'
 const PEOPLE_URL = 'character/:id'
 const opts = {crossDomain: true}
+var users = []
 
 // url primer parametro metodo get, 
 // opts segundo indicar que es un request externo con objeto
@@ -48,12 +49,20 @@ async function obtenerPersonajes(){
         onError(id)
     }
 
-  
+}
+
+window.onload = function() {
+
+    what();
+    function what() {
+            document.getElementById('NameUser').innerHTML = 'users';
+            // document.getElementById('ImageUser--container').innerHTML='<img src="ruta-foto.jpg">';
+    };
 
 }
 
-
 obtenerPersonajes()
+
 
 
 // obtenerPersonaje(2)
